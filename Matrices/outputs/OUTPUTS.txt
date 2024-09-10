@@ -1,0 +1,1 @@
+Carpeta en la que irán todas las salidas de los algoritmos

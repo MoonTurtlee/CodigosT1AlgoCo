@@ -1,6 +1,23 @@
 {
     "files.associations": {
-        "algorithm": "cpp",
-        "chrono": "cpp"
+        "vector": "cpp",
+        "numeric": "cpp",
+        "string": "cpp",
+        "format": "cpp",
+        "array": "cpp",
+        "chrono": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stacktrace": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp",
+        "bitset": "cpp"
     }
 }

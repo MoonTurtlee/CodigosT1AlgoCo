@@ -42,6 +42,14 @@ vector<int> leerListaDesdeArchivo(const string& nombreArchivo) {
     return arr;
 }
 
+// Función para guardar el vector ordenado en un archivo
+void guardarListaEnArchivo(const vector<int>& arr, const string& nombreArchivo) {
+    ofstream archivo(nombreArchivo); // Sobreescribirá el archivo si ya existe
+    for (int num : arr) {
+        archivo << num << endl;
+    }
+    archivo.close();
+}
 
 int main() {
     // Tipos de archivos disponibles
@@ -88,14 +96,22 @@ int main() {
         // Almacenar los tiempos de ejecución
         vector<microseconds> tiempos;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 6; i++) {
              
             vector<int> arr_copy = arr;
             auto start = high_resolution_clock::now();
-            quickSort(arr, 0, arr_copy.size() - 1);
+            quickSort(arr_copy, 0, arr_copy.size() - 1);
             auto stop = high_resolution_clock::now();
 
-            tiempos.push_back(duration_cast<microseconds>(stop - start));
+            if(i != 0){
+                tiempos.push_back(duration_cast<microseconds>(stop - start));
+                // Generar nombre de archivo de salida
+                string archivoSalida = "outputs/ordenada_quicksort_" + archivo.substr(archivo.find_last_of("/") + 1);
+                
+                // Guardar la lista ordenada en el archivo de salida
+                guardarListaEnArchivo(arr_copy, archivoSalida);
+                cout << "Lista ordenada guardada en: " << archivoSalida << endl;
+            }
         }
 
          // Calcular el tiempo promedio en microsegundos
