@@ -5,7 +5,19 @@
 using namespace std;
 using namespace std::chrono;
 
-// Función para fusionar dos subvectores en MergeSort
+/*
+ * Resumen: Función que fusiona dos subvectores ordenados en uno solo dentro del vector principal.
+ *
+ * Parámetros:
+ *  - arr: Referencia al vector de enteros que se está ordenando.
+ *  - left: Índice izquierdo del subvector.
+ *  - mid: Índice medio donde se divide el subvector.
+ *  - right: Índice derecho del subvector.
+ *
+ * Retorno:
+ *  - No retorna valores. Modifica el vector `arr` directamente.
+ */
+
 void merge(vector<int>& arr, int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
@@ -49,7 +61,17 @@ void merge(vector<int>& arr, int left, int mid, int right) {
     }
 }
 
-// Función recursiva para MergeSort
+/*
+ * Resumen: Función recursiva que implementa el algoritmo de ordenamiento MergeSort.
+ *
+ * Parámetros:
+ *  - arr: Referencia al vector de enteros a ordenar.
+ *  - left: Índice inicial del subvector.
+ *  - right: Índice final del subvector.
+ *
+ * Retorno:
+ *  - No retorna valores. Ordena el vector `arr` directamente.
+ */
 void mergeSort(vector<int>& arr, int left, int right) {
     if (left >= right)
         return;
@@ -60,7 +82,15 @@ void mergeSort(vector<int>& arr, int left, int right) {
     merge(arr, left, mid, right);
 }
 
-// Función para leer la lista desde un archivo
+/*
+ * Resumen: Lee una lista de números enteros desde un archivo y los almacena en un vector.
+ *
+ * Parámetros:
+ *  - nombreArchivo: Nombre del archivo que contiene la lista de enteros.
+ *
+ * Retorno:
+ *  - Un vector de enteros que contiene los números leídos desde el archivo.
+ */
 vector<int> leerListaDesdeArchivo(const string& nombreArchivo) {
     vector<int> arr;
     ifstream archivo(nombreArchivo);
@@ -72,7 +102,16 @@ vector<int> leerListaDesdeArchivo(const string& nombreArchivo) {
     return arr;
 }
 
-// Función para guardar el vector ordenado en un archivo
+/*
+ * Resumen: Guarda un vector de enteros en un archivo de texto, cada número en una nueva línea.
+ *
+ * Parámetros:
+ *  - arr: Referencia al vector de enteros que se va a guardar.
+ *  - nombreArchivo: Nombre del archivo donde se guardará la lista de enteros.
+ *
+ * Retorno:
+ *  - No retorna valores. Escribe la lista en el archivo especificado.
+ */
 void guardarListaEnArchivo(const vector<int>& arr, const string& nombreArchivo) {
     ofstream archivo(nombreArchivo); // Sobreescribirá el archivo si ya existe
     for (int num : arr) {
@@ -81,6 +120,15 @@ void guardarListaEnArchivo(const vector<int>& arr, const string& nombreArchivo) 
     archivo.close();
 }
 
+/*
+ * Resumen: Función principal que permite al usuario seleccionar un tipo de archivo y ejecuta MergeSort en varias listas de diferente tamaño.
+ *
+ * Parámetros:
+ *  - Ninguno.
+ *
+ * Retorno:
+ *  - Retorna 0 si la ejecución es exitosa, o 1 si ocurre un error en la selección del archivo.
+ */
 int main() {
     // Tipos de archivos disponibles
     vector<string> tiposDeArchivos = {

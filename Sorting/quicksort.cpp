@@ -5,7 +5,17 @@
 using namespace std;
 using namespace std::chrono;
 
-// Función para realizar la partición en QuickSort
+/*
+ * Resumen: Realiza la partición del vector en QuickSort utilizando un pivote.
+ *
+ * Parámetros:
+ *  - vec: Referencia al vector de enteros que se está ordenando.
+ *  - low: Índice inicial del subvector a particionar.
+ *  - high: Índice final del subvector a particionar.
+ *
+ * Retorno:
+ *  - El índice de la posición del pivote después de la partición.
+ */
 int partition(vector<int>& vec, int low, int high) {
     int mid = low + (high - low) / 2;
     int pivot = vec[mid];
@@ -21,7 +31,17 @@ int partition(vector<int>& vec, int low, int high) {
     return i + 1;
 }
 
-// Función para QuickSort
+/*
+ * Resumen: Función recursiva que implementa el algoritmo de ordenamiento QuickSort.
+ *
+ * Parámetros:
+ *  - vec: Referencia al vector de enteros a ordenar.
+ *  - low: Índice inicial del subvector a ordenar.
+ *  - high: Índice final del subvector a ordenar.
+ *
+ * Retorno:
+ *  - No retorna valores. Ordena el vector `vec` directamente.
+ */
 void quickSort(vector<int>& vec, int low, int high) {
     if (low < high) {
         int pi = partition(vec, low, high);
@@ -30,7 +50,15 @@ void quickSort(vector<int>& vec, int low, int high) {
     }
 }
 
-// Función para leer la lista desde un archivo
+/*
+ * Resumen: Lee una lista de números enteros desde un archivo y los almacena en un vector.
+ *
+ * Parámetros:
+ *  - nombreArchivo: Nombre del archivo que contiene la lista de enteros.
+ *
+ * Retorno:
+ *  - Un vector de enteros que contiene los números leídos desde el archivo.
+ */
 vector<int> leerListaDesdeArchivo(const string& nombreArchivo) {
     vector<int> arr;
     ifstream archivo(nombreArchivo);
@@ -42,7 +70,16 @@ vector<int> leerListaDesdeArchivo(const string& nombreArchivo) {
     return arr;
 }
 
-// Función para guardar el vector ordenado en un archivo
+/*
+ * Resumen: Guarda un vector de enteros en un archivo de texto, cada número en una nueva línea.
+ *
+ * Parámetros:
+ *  - arr: Referencia al vector de enteros que se va a guardar.
+ *  - nombreArchivo: Nombre del archivo donde se guardará la lista de enteros.
+ *
+ * Retorno:
+ *  - No retorna valores. Escribe la lista en el archivo especificado.
+ */
 void guardarListaEnArchivo(const vector<int>& arr, const string& nombreArchivo) {
     ofstream archivo(nombreArchivo); // Sobreescribirá el archivo si ya existe
     for (int num : arr) {
@@ -51,6 +88,15 @@ void guardarListaEnArchivo(const vector<int>& arr, const string& nombreArchivo) 
     archivo.close();
 }
 
+/*
+ * Resumen: Función principal que permite al usuario seleccionar un tipo de archivo y ejecuta QuickSort en varias listas de diferente tamaño.
+ *
+ * Parámetros:
+ *  - Ninguno.
+ *
+ * Retorno:
+ *  - Retorna 0 si la ejecución es exitosa, o 1 si ocurre un error en la selección del archivo.
+ */
 int main() {
     // Tipos de archivos disponibles
     vector<string> tiposDeArchivos = {

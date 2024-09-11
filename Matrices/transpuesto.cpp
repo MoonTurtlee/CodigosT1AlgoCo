@@ -6,7 +6,13 @@
 using namespace std;
 using namespace std::chrono;
 
-// Función para leer una matriz desde un archivo
+/*
+* Parametros: recibe el nombre de un archivo y el tamñano de la matriz a leer
+* 
+* Resumen: La funcion guarda la matriz que lee desde un archivo y lo retorna
+*
+* Retorno: retorna una matriz de enteros
+*/
 vector<vector<int>> leerMatrizDesdeArchivo(const string& nombreArchivo, int n) {
     vector<vector<int>> matriz(n, vector<int>(n));
     ifstream archivo(nombreArchivo);
@@ -19,7 +25,11 @@ vector<vector<int>> leerMatrizDesdeArchivo(const string& nombreArchivo, int n) {
     return matriz;
 }
 
-// Función para guardar una matriz en un archivo
+/*
+* Parametros: recibe una matriz y un string con la ruta y nombre de un archivo
+* 
+* Resumen: La funcion escribe la matriz en el archivo de la ruta especificada
+*/
 void guardarMatrizEnArchivo(const vector<vector<int>>& matriz, const string& nombreArchivo) {
     ofstream archivo(nombreArchivo);
     for (const auto& fila : matriz) {
@@ -31,7 +41,11 @@ void guardarMatrizEnArchivo(const vector<vector<int>>& matriz, const string& nom
     archivo.close();
 }
 
-// Función para multiplicar dos matrices
+/*
+* Parametros: recibe las matrices A y B, en conjunto con el tamaño n.
+* 
+* Resumen: La funcion transpone la matriz B y luego aplica la multiplicacion de matrices tradicional
+*/
 vector<vector<int>> multiplicarMatrices(const vector<vector<int>>& matrizA, vector<vector<int>>& matrizB, int n) {
 
     for (int i = 0; i < n; ++i) {
@@ -51,6 +65,15 @@ vector<vector<int>> multiplicarMatrices(const vector<vector<int>>& matrizA, vect
     return resultado;
 }
 
+
+
+/*
+* Parametros: No recibe
+* 
+* Resumen: Funcion principal del programa, le consulta al usuario el dataset a utilizar y ejecuta el algoritmo
+*          que será testeado, posteriormente imprimer por pantalla el tiempo que le tomo al algoritmo terminar
+*          y en donde se guardo el output
+*/
 int main() {
     // Tipos de archivos disponibles
     vector<string> tiposDeArchivos = {

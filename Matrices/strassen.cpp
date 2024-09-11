@@ -5,7 +5,13 @@
 using namespace std;
 using namespace std::chrono;
 
-// Función para leer una matriz desde un archivo
+/*
+* Parametros: recibe el nombre de un archivo y el tamñano de la matriz a leer
+* 
+* Resumen: La funcion guarda la matriz que lee desde un archivo y lo retorna
+*
+* Retorno: retorna una matriz de enteros
+*/
 vector<vector<int>> leerMatrizDesdeArchivo(const string& nombreArchivo, int n) {
     vector<vector<int>> matriz(n, vector<int>(n));
     ifstream archivo(nombreArchivo);
@@ -18,21 +24,11 @@ vector<vector<int>> leerMatrizDesdeArchivo(const string& nombreArchivo, int n) {
     return matriz;
 }
 
-// Función para imprimir una matriz
-void print(string display, vector<vector<int>> matrix, int start_row, int start_column, int end_row, int end_column) {
-    cout << endl << display << " =>" << endl;
-    for (int i = start_row; i <= end_row; i++) {
-        for (int j = start_column; j <= end_column; j++) {
-            cout << setw(10);
-            cout << matrix[i][j];
-        }
-        cout << endl;
-    }
-    cout << endl;
-    return;
-}
-
-// Función para guardar una matriz en un archivo
+/*
+* Parametros: recibe una matriz y un string con la ruta y nombre de un archivo
+* 
+* Resumen: La funcion escribe la matriz en el archivo de la ruta especificada
+*/
 void guardarMatrizEnArchivo(const vector<vector<int>>& matriz, const string& nombreArchivo) {
     ofstream archivo(nombreArchivo);
     for (const auto& fila : matriz) {
@@ -44,7 +40,19 @@ void guardarMatrizEnArchivo(const vector<vector<int>>& matriz, const string& nom
     archivo.close();
 }
 
-// Función para sumar/restar matrices
+/*
+ * Resumen: Realiza la suma de dos matrices hasta un índice dado, con la opción de multiplicar una de ellas por un escalar.
+ * 
+ * Parámetros:
+ *  - matrix_A: Primera matriz de enteros.
+ *  - matrix_B: Segunda matriz de enteros.
+ *  - split_index: Índice que define el tamaño de las submatrices a sumar.
+ *  - multiplier: (Opcional) Escalar por el cual se multiplica la matriz B antes de sumarla a la matriz A (por defecto es 1).
+ * 
+ * Retorno:
+ *  - La matriz resultante de la suma de `matrix_A` con `matrix_B * multiplier`, hasta `split_index`.
+ */
+
 vector<vector<int>> add_matrix(vector<vector<int>> matrix_A, vector<vector<int>> matrix_B, int split_index, int multiplier = 1) {
     for (int i = 0; i < split_index; i++)
         for (int j = 0; j < split_index; j++)
@@ -52,7 +60,17 @@ vector<vector<int>> add_matrix(vector<vector<int>> matrix_A, vector<vector<int>>
     return matrix_A;
 }
 
-// Algoritmo de Strassen para la multiplicación de matrices
+/*
+ * Resumen: Realiza la multiplicación de dos matrices utilizando el algoritmo de Strassen si las dimensiones lo permiten.
+ * 
+ * Parámetros:
+ *  - matrix_A: Primera matriz de enteros.
+ *  - matrix_B: Segunda matriz de enteros.
+ * 
+ * Retorno:
+ *  - La matriz resultante de la multiplicación entre `matrix_A` y `matrix_B`.
+ *  - Si las dimensiones de las matrices no son compatibles para la multiplicación, retorna una matriz vacía.
+ */
 vector<vector<int>> multiply_matrix(vector<vector<int>> matrix_A, vector<vector<int>> matrix_B) {
     int col_1 = matrix_A[0].size();
     int row_1 = matrix_A.size();
@@ -115,6 +133,15 @@ vector<vector<int>> multiply_matrix(vector<vector<int>> matrix_A, vector<vector<
     return result_matrix;
 }
 
+
+
+/*
+* Parametros: No recibe
+* 
+* Resumen: Funcion principal del programa, le consulta al usuario el dataset a utilizar y ejecuta el algoritmo
+*          que será testeado, posteriormente imprimer por pantalla el tiempo que le tomo al algoritmo terminar
+*          y en donde se guardo el output
+*/
 int main() {
     // Tipos de archivos disponibles
     vector<string> tiposDeArchivos = {

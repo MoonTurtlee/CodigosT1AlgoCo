@@ -9,7 +9,15 @@
 using namespace std;
 using namespace std::chrono;
 
-// Función para Selection Sort
+/*
+ * Resumen: Ordena un vector de enteros utilizando el algoritmo de Selection Sort.
+ *
+ * Parámetros:
+ *  - arr: Referencia al vector de enteros que se va a ordenar.
+ *
+ * Retorno:
+ *  - No retorna valores. Ordena el vector `arr` directamente.
+ */
 void selectionSort(vector<int>& arr) {
     int n = arr.size();
     for (int i = 0; i < n - 1; i++) {
@@ -23,7 +31,15 @@ void selectionSort(vector<int>& arr) {
     }
 }
 
-// Función para leer la lista desde un archivo
+/*
+ * Resumen: Lee una lista de números enteros desde un archivo y los almacena en un vector.
+ *
+ * Parámetros:
+ *  - nombreArchivo: Nombre del archivo que contiene la lista de enteros.
+ *
+ * Retorno:
+ *  - Un vector de enteros que contiene los números leídos desde el archivo.
+ */
 vector<int> leerListaDesdeArchivo(const string& nombreArchivo) {
     vector<int> arr;
     ifstream archivo(nombreArchivo);
@@ -35,7 +51,16 @@ vector<int> leerListaDesdeArchivo(const string& nombreArchivo) {
     return arr;
 }
 
-// Función para guardar el vector ordenado en un archivo
+/*
+ * Resumen: Guarda un vector de enteros en un archivo de texto, cada número en una nueva línea.
+ *
+ * Parámetros:
+ *  - arr: Referencia al vector de enteros que se va a guardar.
+ *  - nombreArchivo: Nombre del archivo donde se guardará la lista de enteros.
+ *
+ * Retorno:
+ *  - No retorna valores. Escribe la lista en el archivo especificado.
+ */
 void guardarListaEnArchivo(const vector<int>& arr, const string& nombreArchivo) {
     ofstream archivo(nombreArchivo); // Sobreescribirá el archivo si ya existe
     for (int num : arr) {
@@ -44,6 +69,15 @@ void guardarListaEnArchivo(const vector<int>& arr, const string& nombreArchivo) 
     archivo.close();
 }
 
+/*
+ * Resumen: Función principal que permite al usuario seleccionar un tipo de archivo y ejecuta Selection Sort en varias listas de diferente tamaño.
+ *
+ * Parámetros:
+ *  - Ninguno.
+ *
+ * Retorno:
+ *  - Retorna 0 si la ejecución es exitosa, o 1 si ocurre un error en la selección del archivo.
+ */
 int main() {
     // Tipos de archivos disponibles
     vector<string> tiposDeArchivos = {
